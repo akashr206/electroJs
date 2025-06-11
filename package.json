@@ -1,32 +1,24 @@
 {
-  "name": "my-electron-app",
+  "name": "MLcourse",
   "version": "1.0.0",
   "description": "A simple Electron app to create ML course",
   "main": "electron/main.js",
+  "type": "module",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",
-    "dev": "concurrently \"cd frontend && npm run dev\" \"./backend/venv/bin/activate && python server.py\" \"npm start\""
+    "pack": "electron-builder --dir",
+    "dev": "concurrently \"cd frontend && npm run dev\" \"npm start\""
   },
   "author": "Akash R",
   "license": "MIT",
   "dependencies": {
     "concurrently": "^9.1.2",
-    "electron": "^30.0.0"
+    "electron-is-dev": "^3.0.1",
+    "tree-kill": "^1.2.2"
   },
   "devDependencies": {
-    "electron-builder": "^24.0.0"
-  },
-  "build": {
-    "appId": "com.mlcourse.app",
-    "productName": "ML Course",
-    "files": [
-      "electron/**/*",
-      "frontend/build/**/*",
-      "backend/**/*"
-    ],
-    "directories": {
-      "output": "dist"
-    }
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
   }
 }
