@@ -152,7 +152,7 @@ Please replace the API endpoint in the code with your actual AI service.`,
                 </div>
             </div>
 
-            <ScrollArea ref={scrollAreaRef} className="flex-1 my-20 pb-32 p-4">
+            <ScrollArea ref={scrollAreaRef} className="flex-1 my-20 pb-32 overflow-scroll p-4">
                 <div className="space-y-4">
                     {messages.map((message) => (
                         <div
