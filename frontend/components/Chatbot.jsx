@@ -58,7 +58,7 @@ const ChatBot = () => {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: "Bearer XNBY5ZD-4VW4NY6-GRHV3C1-7KA04ZR",
+                        Authorization: `Bearer ${process.env.API}`,
                     },
                     body: JSON.stringify({
                         message: userMessage.content,
@@ -83,7 +83,6 @@ const ChatBot = () => {
                 role: "assistant",
                 timestamp: new Date(),
             };
-            console.log(assistantMessage);
 
             setMessages((prev) => [...prev, assistantMessage]);
         } catch (error) {
@@ -132,8 +131,10 @@ Please replace the API endpoint in the code with your actual AI service.`,
 
     return (
         <div className="flex flex-col h-screen  mx-auto relative border-x border-border">
-
-            <ScrollArea ref={scrollAreaRef} className="flex-1 pb-32 overflow-scroll p-4">
+            <ScrollArea
+                ref={scrollAreaRef}
+                className="flex-1 pb-32 overflow-scroll p-4"
+            >
                 <div className="space-y-4">
                     {messages.map((message) => (
                         <div
