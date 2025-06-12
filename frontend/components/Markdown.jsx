@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const Markdown = ({ content }) => {
-    console.log(content);
-
     return (
         <ReactMarkdown
             remarkPlugins={[remarkGfm]}
@@ -15,13 +15,13 @@ const Markdown = ({ content }) => {
                 code: ({ children, className }) => {
                     const isInline = !className;
                     return isInline ? (
-                        <code className="bg-muted px-1 py-0.5 rounded text-sm font-mono">
+                        <SyntaxHighlighter language="python" style={docco} className="bg-muted px-1 py-0.5 rounded text-sm font-mono">
                             {children}
-                        </code>
+                        </SyntaxHighlighter>
                     ) : (
-                        <code className="block bg-muted p-2 rounded text-sm font-mono overflow-x-auto">
+                        <SyntaxHighlighter language="python" style={docco} className="bg-muted px-1 py-0.5 rounded text-sm font-mono">
                             {children}
-                        </code>
+                        </SyntaxHighlighter>
                     );
                 },
                 pre: ({ children }) => (
