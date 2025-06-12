@@ -53,12 +53,12 @@ const ChatBot = () => {
 
         try {
             const response = await fetch(
-                "http://localhost:3001/api/v1/workspace/practice/chat",
+                "http://localhost:3001/api/v1/workspace/vishnus-workspace/chat",
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: "Bearer CEKTQRK-CDR4RK7-JHRVNHK-ATM42D9",
+                        Authorization: "Bearer XNBY5ZD-4VW4NY6-GRHV3C1-7KA04ZR",
                     },
                     body: JSON.stringify({
                         message: userMessage.content,
