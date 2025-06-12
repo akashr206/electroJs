@@ -74,7 +74,6 @@ const ChatBot = () => {
             }
 
             const data = await response.json();
-            console.log(data);
 
             const assistantMessage = {
                 id: data.id,
@@ -133,26 +132,8 @@ Please replace the API endpoint in the code with your actual AI service.`,
 
     return (
         <div className="flex flex-col h-screen  mx-auto relative border-x border-border">
-            <div className="fixed top-0 z-[100] w-[100%] flex items-center justify-between p-4 border-b border-border bg-card">
-                <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                        <Bot className="w-5 h-5 text-primary-foreground" />
-                    </div>
-                    <div>
-                        <h1 className="text-lg font-semibold text-foreground">
-                            AI Assistant
-                        </h1>
-                        <p className="text-sm text-muted-foreground">
-                            Always here to help
-                        </p>
-                    </div>
-                </div>
-                <div className="text-xs text-muted-foreground">
-                    {isLoading ? "Typing..." : "Online"}
-                </div>
-            </div>
 
-            <ScrollArea ref={scrollAreaRef} className="flex-1 my-20 pb-32 overflow-scroll p-4">
+            <ScrollArea ref={scrollAreaRef} className="flex-1 pb-32 overflow-scroll p-4">
                 <div className="space-y-4">
                     {messages.map((message) => (
                         <div
