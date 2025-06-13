@@ -1,24 +1,63 @@
 {
-  "name": "MLcourse",
+  "name": "mlcourse",
   "version": "1.0.0",
   "description": "A simple Electron app to create ML course",
   "main": "electron/main.js",
   "type": "module",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder",
-    "pack": "electron-builder --dir",
-    "dev": "concurrently \"cd frontend && npm run dev\" \"npm start\""
+    "electron-dev": "cross-env NODE_ENV=development electron .",
+    "frontend-dev": "cd frontend && npm run dev",
+    "frontend-build": "cd frontend && npm run build",
+    "frontend-export": "cd frontend && npm run build && npm run export",
+    "frontend-start": "cd frontend && npm run start",
+    "dev": "concurrently \"npm run frontend-dev\" \"wait-on http://localhost:3000 && npm run electron-dev\"",
+    "build": "npm run frontend-export",
+    "electron-build": "npm run frontend-build && electron .",
+    "pack": "npm run frontend-build && electron-builder --dir",
+    "dist": "npm run frontend-build && electron-builder",
+    "postinstall": "cd frontend && npm install"
   },
   "author": "Akash R",
   "license": "MIT",
   "dependencies": {
     "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
     "electron-is-dev": "^3.0.1",
-    "tree-kill": "^1.2.2"
+    "tree-kill": "^1.2.2",
+    "wait-on": "^7.2.0"
   },
   "devDependencies": {
     "electron": "^30.0.0",
     "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.akashr.mlcourse",
+    "productName": "ML Course",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "electron/**/*",
+      "frontend/.next/**/*",
+      "frontend/package.json",
+      "package.json"
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   }
 }

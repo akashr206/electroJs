@@ -50,15 +50,15 @@ const ChatBot = () => {
         setMessages((prev) => [...prev, userMessage]);
         setInput("");
         setIsLoading(true);
-
+        
         try {
             const response = await fetch(
-                "http://localhost:3001/api/v1/workspace/vishnus-workspace/chat",
+                "http://localhost:3001/api/v1/workspace/practice/chat",
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: `Bearer ${process.env.API}`,
+                        Authorization: `Bearer CEKTQRK-CDR4RK7-JHRVNHK-ATM42D9`,
                     },
                     body: JSON.stringify({
                         message: userMessage.content,
@@ -130,7 +130,7 @@ Please replace the API endpoint in the code with your actual AI service.`,
     };
 
     return (
-        <div className="flex flex-col h-screen  mx-auto relative border-x border-border">
+        <div className="flex flex-col bg-background h-screen  mx-auto relative border-x border-border">
             <ScrollArea
                 ref={scrollAreaRef}
                 className="flex-1 pb-32 overflow-scroll p-4"

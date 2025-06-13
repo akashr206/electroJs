@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
     const { prompt, max_tokens } = await req.json();
+
     try {
         const res = await fetch("http://localhost:8000/generate", {
             method: "POST",
@@ -14,7 +15,6 @@ export async function POST(req) {
             }),
         });
         const data = await res.json();
-        console.log(data);
         return NextResponse.json(data);
     } catch (error) {
         return NextResponse.json({ error });

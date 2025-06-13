@@ -33,6 +33,13 @@ const page = () => {
         } catch (error) {}
     }
 
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            generateCourse();
+        }
+    };
+
     return (
         <div className="w-[calc(100vw-288px)] h-screen flex flex-col justify-between ">
             <div className="text-3xl mx-auto font-bold p-5">
@@ -74,6 +81,7 @@ const page = () => {
             </div>
             <div className="flex border-t p-4 pb-8 gap-2">
                 <Input
+                    onKeyDown={handleKeyPress}
                     value={input}
                     onChange={(e) => {
                         setInput(e.target.value);
